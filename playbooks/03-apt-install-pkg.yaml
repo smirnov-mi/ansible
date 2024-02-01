@@ -1,20 +1,23 @@
 ---
-- name: apt update and install pkg playbook
+- name: install and rm pkgs playbook
   hosts: all
   become: true
   tasks:
 
-  - name: update apt cache
-    apt:
-      update_cache: yes
-
-  - name: install apache2
-    apt:
-      name: apache2
+  - name: install pkgs apache2 for Ubuntu
+    package:
+      name: 
+        - "{{ apache_package }}"
+        - "{{ php_package }}"
+        - libapache2-mod-watchcat
       state: latest
+      update_cache: yes
+        #    when: ansible_distribution == ["Debian", "Ubuntu"]
 
-  - name: remove php for apache
-    apt:
-      name: libapache2-mod-php
+  - name: remove xsendfile for apache
+    package:
+      name: 
+        - libapache2-mod-xsendfile
       state: absent
+        #    when: ansible_distribution == "Ubuntu"
 
