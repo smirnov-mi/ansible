@@ -1,0 +1,24 @@
+---
+- name: OS upgrade playbook
+  hosts: all
+#  hosts: rancher
+  tasks:
+#  - name: Copy file hosts with permissions
+#    ansible.builtin.copy:
+#      src: ./test1
+#      dest: /tmp/test1
+#      mode: '0644'
+#  - name: Add the user 'bob'
+#    ansible.builtin.user:
+#      name: bob
+#    become: yes
+#    become_method: sudo
+  - name: Set kubectl on hold
+    dpkg_selections:
+    name: kubectl
+    selection: hold
+  - name: Upgrade all apt packages
+    apt:
+      force_apt_get: yes
+      upgrade: dist
+    become: yes
