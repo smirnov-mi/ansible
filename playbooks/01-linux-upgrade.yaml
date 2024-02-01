@@ -1,7 +1,6 @@
 ---
 - name: OS upgrade playbook
   hosts: all
-#  hosts: rancher
   tasks:
 #  - name: Copy file hosts with permissions
 #    ansible.builtin.copy:
@@ -25,10 +24,7 @@
         dpkg --set-selections << EOF
         kubelet hold
         kubeadm hold
-        vim hold
         EOF
-
-        #    exit 0
 
   - name: Upgrade all apt packages
     apt:
