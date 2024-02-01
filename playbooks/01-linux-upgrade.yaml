@@ -13,10 +13,23 @@
 #      name: bob
 #    become: yes
 #    become_method: sudo
-  - name: Set kubectl on hold
+  - name: Prevent kubectl from being upgraded
+    become: yes
     dpkg_selections:
-    name: kubectl
-    selection: hold
+      name: kubectl
+      selection: hold
+
+  - name: Prevent multiple pkgs from being upgraded
+    become: yes
+    ansible.builtin.shell: |
+        dpkg --set-selections << EOF
+        kubelet hold
+        kubeadm hold
+        vim hold
+        EOF
+
+        #    exit 0
+
   - name: Upgrade all apt packages
     apt:
       force_apt_get: yes
