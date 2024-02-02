@@ -1,0 +1,35 @@
+---
+- name: adding a new local account with sudo and key
+  hosts: all
+  become: true
+  remote_user: root
+  vars:
+    users:
+      - "muscat"
+
+  tasks:
+
+  - name: Add the user 'muscat' with a bash shell, appending the group 'root' to the user's groups
+    tags: add-user
+    ansible.builtin.user:
+      name: muscat
+      shell: /bin/bash
+      #groups: admins,developers
+      groups: root
+      append: yes
+      expires: -1
+
+  - name: "Add authorized keys"
+    tags: add-ssh-key
+    authorized_key:
+      user: "{{ item }}"
+      key: "{{ lookup('file', '~/.ssh/id_ansible.pub') }}"
+    with_items: "{{ users }}"
+
+  - name: sudo without password
+    become: true
+    copy:
+      dest: /etc/sudoers.d/muscat
+      content: 'muscat ALL=(ALL) NOPASSWD:ALL'
+
+
