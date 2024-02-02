@@ -1,0 +1,13 @@
+---
+hostname: "t1-debian12"
+  
+# hcloud - Hetzner Cloud
+h_server_location: "nbg1"
+h_server_type: "cx11"
+h_server_image: "debian-12"
+h_server_ssh_keys:
+#  - anna_beispiel_salbei_19_pub
+  - rancher-git
+h_volume_name: "testserver-data"
+#h_volume_size: 10   #in GB. unset to skip
+h_volume_format: "ext4"
