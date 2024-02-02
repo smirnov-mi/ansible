@@ -1,0 +1,60 @@
+---
+
+- name: create hcloud server with attached disk volume
+  hosts: localhost
+  connection: local
+  gather_facts: false
+#  user: root
+  vars_files:
+    - ~/vars/hcloud_token.yml
+    - "~/ansible-git/ansible/host_vars/{{ cloudserver }}.yml"   # there the host var file lives
+
+  tasks:
+  - name: list server
+    tags: list
+    hcloud_server_info:
+      api_token: "{{ hcloud_token }}"
+      name: "{{ cloudserver }}"
+
+  - name: create server
+    tags: create
+    hcloud_server:
+      api_token: "{{ hcloud_token }}"
+      name: "{{ hostname }}"
+      server_type: "{{ h_server_type }}"
+      image: "{{ h_server_image }}"
+      location: "{{ h_server_location }}"
+      ssh_keys: "{{ h_server_ssh_keys }}"
+      state: present
+    register: server
+
+  - name: attach disk volume
+    tags: add-disk
+    hcloud_volume:
+      api_token: "{{ hcloud_token }}"
+      name: "{{ h_volume_name }}"
+      size: "{{ h_volume_size }}"
+      format: "{{ h_volume_format }}"
+      server: "{{ server.hcloud_server.name }}"
+      automount: no   # does not mount to the correct place
+      state: present
+    when: h_volume_size is defined
+
+#  - name: list server
+#    hcloud_server_info:
+#      api_token: "{{ hcloud_token }}"
+#      name: "{{ cloudserver }}"
+
+  - name: print status
+    tags: status
+    debug:
+      msg:
+        - "finished creating {{ server.hcloud_server.name }}"
+        - "id: {{ server.hcloud_server.id }}"
+        - "type:        {{ server.hcloud_server.server_type }}"
+        - "status:      {{ server.hcloud_server.status }}"
+        - "datacenter:  {{ server.hcloud_server.datacenter }}"
+        - "{{ cloudserver }}  IN A     {{ server.hcloud_server.ipv4_address}}"
+        - "{{ cloudserver }}  IN AAAA  {{ server.hcloud_server.ipv6 }}"
+
+
