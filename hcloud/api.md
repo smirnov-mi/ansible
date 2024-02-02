@@ -21,6 +21,14 @@ curl -H "Authorization: Bearer $API_TOKEN" "https://api.hetzner.cloud/v1/servers
 
 curl -H "Authorization: Bearer $API_TOKEN" "https://api.hetzner.cloud/v1/servers/${ID}"
 
+### delete server
+get IDs:
+
+ curl -H "Authorization: Bearer $API_TOKEN" "https://api.hetzner.cloud/v1/servers/"   |grep -B1 name |grep id
+
+remove server
+
+ curl -X DELETE -H "Authorization: Bearer $API_TOKEN" "https://api.hetzner.cloud/v1/servers/${ID}/"
 
 
 ## ansible
@@ -32,11 +40,6 @@ ansible-playbook playbooks/h02-server-create.yml --skip-tags add-disk --extra-va
 
 ### delete a server
 
-get IDs:
+ansible-playbook playbooks/h02-server-remove.yml -t list,remove --extra-vars "cloudserver=t1-debian12"
 
- curl -H "Authorization: Bearer $API_TOKEN" "https://api.hetzner.cloud/v1/servers/"   |grep -B1 name |grep id
-
-remove server
-
- curl -X DELETE -H "Authorization: Bearer $API_TOKEN" "https://api.hetzner.cloud/v1/servers/${ID}/"
 
