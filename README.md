@@ -40,3 +40,26 @@ h_volume_format: "ext4"
 
 ```
 ansible-playbook playbooks/h02-server-create.yml -i $HOME/.ansible/hosts --extra-vars "cloudserver=testserver"
+
+
+## adding hcloud collection to ansible:
+
+
+```
+mc:~/ansible-git/ansible$ vi requirements.yaml
+
+mc:~/ansible-git/ansible$ cat requirements.yaml
+collections:
+  - name: hetzner.hcloud
+
+mc:~/ansible-git/ansible$ ansible-galaxy install -r requirements.yaml
+Starting galaxy collection install process
+Process install dependency map
+Starting collection install process
+...
+...
+hetzner.hcloud (2.5.0) was installed successfully
+
+```
+
+
