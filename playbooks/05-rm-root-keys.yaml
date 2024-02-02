@@ -1,0 +1,14 @@
+---
+# removing all root auth keys after we added ansible sudo account
+#
+# You can also use the 'args' form to provide the options.
+- name: Emptying root auth. keys
+  hosts: all
+  become: true
+  remote_user: muscat
+  tasks: 
+  - name: Echo null into root keys
+    tags: rm-root-key
+    ansible.builtin.shell: echo ""  > $(eval echo "~root")/.ssh/authorized_keys
+
+
