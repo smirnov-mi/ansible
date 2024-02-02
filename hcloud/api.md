@@ -23,3 +23,20 @@ curl -H "Authorization: Bearer $API_TOKEN" "https://api.hetzner.cloud/v1/servers
 
 
 
+## ansible
+
+### install a server
+create a config file in host-vars/servername.yml
+
+ansible-playbook playbooks/h02-server-create.yml --skip-tags add-disk --extra-vars "cloudserver=t2-centos1"
+
+### delete a server
+
+get IDs:
+
+ curl -H "Authorization: Bearer $API_TOKEN" "https://api.hetzner.cloud/v1/servers/"   |grep -B1 name |grep id
+
+remove server
+
+ curl -X DELETE -H "Authorization: Bearer $API_TOKEN" "https://api.hetzner.cloud/v1/servers/${ID}/"
+
