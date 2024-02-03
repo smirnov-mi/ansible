@@ -42,4 +42,8 @@ ansible-playbook playbooks/h02-server-create.yml --skip-tags add-disk --extra-va
 
 ansible-playbook playbooks/h02-server-remove.yml -t list,remove --extra-vars "cloudserver=t1-debian12"
 
+or
+
+ansible-playbook ~/ansible-git/ansible/playbooks/h02-server-remove.yml --extra-vars "cloudserver=t1-debian12" 
+
 
