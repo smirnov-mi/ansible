@@ -20,6 +20,7 @@ sudo apt --fix-broken install
 ## add HCLOUD collection
 
 https://github.com/ansible-collections/hetzner.hcloud
+https://github.com/ansible-collections/hetzner.hcloud/blob/main/examples/use-refresh-inventory.yml
 
 ### install hcloud-python module
 
