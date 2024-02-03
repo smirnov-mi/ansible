@@ -1,5 +1,10 @@
 # Ansible related examples
 
+## Setup Ansible server
+
+To install latest ansible on Ubuntu, see: (setup.md)[setup.md]
+
+
 ## ansible.cfg
 
 (?)adding hcloud collection:
