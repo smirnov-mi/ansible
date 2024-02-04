@@ -1,0 +1,23 @@
+# trying to install server using hcloud collection
+---
+- name: Demonstrate creating servers with a firewall
+  collections: 
+    - hetzner.hcloud
+  hosts: localhost
+  connection: local
+
+  vars:
+    servers:
+      - name: my-server1
+      - name: my-server2
+
+  tasks:
+    - name: Create servers
+      hetzner.hcloud.server:
+        name: "{{ item.name }}"
+        server_type: cx11
+        image: debian-12
+        labels:
+          kind: runners
+        state: started
+      loop: "{{ servers }}"
