@@ -1,0 +1,29 @@
+
+# trying to get a list of servers from hcloud
+#
+---
+# list_hcloud_server.yml
+# hcloud list a server
+- name: list hcloud server | test
+  hosts: localhost
+  connection: local
+  gather_facts: false
+#  user: root
+  vars_files:
+    - ~/vars/hcloud_token.yml
+
+  tasks:
+  - name: list server
+    hcloud_server_info:
+      api_token: "{{ hcloud_token }}"
+        #      name: "{{ cloudserver }}"
+
+- name: Get server information from Hetzner Cloud
+  hosts: t1-debian12
+  gather_facts: false
+  tasks:
+  - name: Print server names and IP addresses
+    debug:
+      msg: "{{ inventory_hostname }} IP is {{ ansible_ssh_host }}"
+
+
