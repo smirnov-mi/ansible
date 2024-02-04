@@ -45,16 +45,3 @@
 #      api_token: "{{ hcloud_token }}"
 #      name: "{{ cloudserver }}"
 
-  - name: print status
-    tags: status
-    debug:
-      msg:
-        - "finished creating {{ server.hcloud_server.name }}"
-        - "id: {{ server.hcloud_server.id }}"
-        - "type:        {{ server.hcloud_server.server_type }}"
-        - "status:      {{ server.hcloud_server.status }}"
-        - "datacenter:  {{ server.hcloud_server.datacenter }}"
-        - "{{ cloudserver }}  IN A     {{ server.hcloud_server.ipv4_address}}"
-        - "{{ cloudserver }}  IN AAAA  {{ server.hcloud_server.ipv6 }}"
-
-
