@@ -7,6 +7,8 @@
 
 ## ansible.cfg
 
+Example for [Hetzner Cloud](https://accounts.hetzner.com/login), so an account will be required.
+
 (?)adding hcloud collection:
 
 (?)Starting galaxy role install process
