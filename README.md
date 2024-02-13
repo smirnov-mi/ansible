@@ -2,7 +2,7 @@
 
 ## Setup Ansible server
 
-To install latest ansible on Ubuntu, see: [setup.md](setup.md)
+**Make sure!!** To install the latest ansible (**not the one from the default OS repo!**) For Ubuntu see: [setup.md](setup.md)
 
 
 ## ansible.cfg
