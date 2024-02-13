@@ -43,6 +43,29 @@ hetzner.hcloud (2.5.0) was installed successfully
 ```
 
 
+**Verify this manual too:**
+
+**add Ansible Collection: hetzner.hcloud**
+
+https://github.com/ansible-collections/hetzner.hcloud
+
+
+```
+ansible-galaxy collection install hetzner.hcloud
+```
+or
+```
+ansible-galaxy collection install hetzner.hcloud:==2.5.0 --force
+
+
+Installing 'hetzner.hcloud:2.5.0' to '/home/xxx/.ansible/collections/ansible_collections/hetzner/hcloud'
+Downloading https://galaxy.ansible.com/api/v3/plugin/ansible/content/published/collections/artifacts/hetzner-hcloud-2.5.0.tar.gz
+
+
+```
+
+
+
 ### install hcloud-python module
 
 https://hcloud-python.readthedocs.io/en/stable/installation.html
@@ -60,23 +83,4 @@ xxx@rancher-mc:~/ansible-git$ sudo pip install ./hcloud-python
 
 
  
-### add Ansible Collection: hetzner.hcloud
-
-https://github.com/ansible-collections/hetzner.hcloud
-
-
-```
-ansible-galaxy collection install hetzner.hcloud
-```
-or 
-```
-ansible-galaxy collection install hetzner.hcloud:==2.5.0 --force
-
-
-Installing 'hetzner.hcloud:2.5.0' to '/home/xxx/.ansible/collections/ansible_collections/hetzner/hcloud'
-Downloading https://galaxy.ansible.com/api/v3/plugin/ansible/content/published/collections/artifacts/hetzner-hcloud-2.5.0.tar.gz 
-
-
-```
-
 
