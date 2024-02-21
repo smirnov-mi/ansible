@@ -69,4 +69,8 @@ hetzner.hcloud (2.5.0) was installed successfully
 
 ```
 
+## creating / removing hetzner servers
+
+[hcloud/api.md](hcloud/api.md)
+
 
