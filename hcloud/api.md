@@ -36,7 +36,7 @@ remove server
 ### install a server
 create a config file in host-vars/servername.yml
 
-ansible-playbook playbooks/h02-server-create.yml --skip-tags add-disk --extra-vars "cloudserver=t2-centos1"
+ansible-playbook ~/ansible-git/ansible/playbooks/h02-server-create.yml --skip-tags add-disk --extra-vars "cloudserver=t1-debian12"
 
 ### delete a server
 
