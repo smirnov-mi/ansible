@@ -6,8 +6,8 @@
   gather_facts: false
 #  user: root
   vars_files:
-    - ~/vars/hcloud_token.yml
-    - "~/ansible-git/ansible/host_vars/{{ cloudserver }}.yml"   # there the host var file lives
+    - ~/vars/hcloud_token.yml                           # your Hetzner token
+    - "~/git/ansible/host_vars/{{ cloudserver }}.yml"   # where the host var file lives
 
   tasks:
   - name: list server
